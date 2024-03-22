@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;
+    font-family: 'karla', sans-serif;
+}
+
+body{
+    
+    background-image: url('./img/balambwallpaper.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.911);
+}
+
+.pagina {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.logo{
+    max-width: 300px;
+    margin-top: 15px;
+}
+
+
+.asideNav{
+    position: sticky;
+    top: 0px;
+    background-color: rgba(10, 10, 10, 0.658);
+    box-shadow: 0px 0px 7px 11px rgb(112 204 196 / 29%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+    margin: 22px;
+    border-radius: 20px;
+}
+
+.asideNavList{
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    list-style-type: none;
+}
+
+.botonProductos{
+    font-size: large;
+    background-color: rgba(58, 213, 240, 0.493);
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+.botonProductos:hover{
+    background-color: transparent;
+    transition: all .5s;
+}
+
+.botonCarro{
+    font-size: large;
+    background-color: rgba(58, 213, 240, 0.493);
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    margin-top: 40px;
+}
+
+.botonCarro:hover{
+    background-color: rgb(255, 0, 0);
+    color: black;
+    transition: all .5s;
+}
+
+.linkCarro{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.mainProducto{
+    background-color: rgba(10, 10, 10, 0.658);
+    box-shadow: -1px 2px 4px 9px rgb(112 204 196 / 29%);
+    margin: 22px;
+    border-radius: 20px;
+    padding: 44px;
+}
+
+.tituloIndex{
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+    margin-bottom: 50px;
+    border-style: solid;
+    border-color: white;
+    background-color: rgba(58, 213, 240, 0.493);
+    border-radius: 20px;
+    border-width: 1px;
+    padding: 10px;
+}
+
+.productos{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 66px;
+    align-items: center;
+}
+
+.foto{
+    max-width: 100%;
+}
+
+.productoInfo{
+    background-color: rgba(255, 255, 255, 0.671);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+}
+
+#fotoAgrias{
+    margin-left: 20px;
+}
+
+.productoNombre{
+    text-align: center;
+}
+
+.botonCompra{
+    background-color: rgba(58, 213, 240, 0.493);
+    border-radius: 20px;
+    padding: 10px;
+    font-size: larger;
+    font-weight: bolder;
+    cursor: pointer;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+.botonCompra:hover{
+    background-color: transparent;
+    transition: all .5s;
+
+}
+
+.precioProducto{
+    text-align: center;
+}
+
+.productoFoto{
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    border-radius: 20px;
+}
+
+.footer{
+    background-color: rgba(10, 10, 10, 0.658);
+    padding: 10px;
+    text-align: center;
+    color: white;
+
+}
+
+
