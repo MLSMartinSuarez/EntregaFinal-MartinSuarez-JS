@@ -1,3 +1,31 @@
+const products = [
+    {"id":1,  "stock":20, "product":"Final Fantasy VIII", "description":"juego fisico de ff8" , "price": "15" , "image":"./img/ff8FISICO.png" , "category":"juego"},
+
+
+    {"id":2,  "stock":20, "product":"Final Fantasy IX", "description":"juego fisico de ff9" , "price": "15" , "image":"./img/ff9FISICO.png" ,"category":"juego"},
+
+    
+    {"id":3,  "stock":20, "product":"Final Fantasy XVI", "description":"juego fisico de ff16" , "price": "25" , "image":"./img/ff16FISICO.png" , "category":"juego"},
+
+
+    {"id":4,  "stock":20, "product":"Cosplay COMPLETO ff14", "description":"cosplay completo de ff14" , "price": "100" , "image":"./img/ff14COS.png" ,"category":"cosplay"},
+
+
+    {"id":5,  "stock":20, "product":"Cosplay COMPLETO Tifa", "description":"cosplay completo de tifa" , "price": "100" , "image":"./img/tifaCOS.png" ,"category":"cosplay"},
+
+
+    {"id":6,  "stock":20, "product":"Tifa Peluca Pelo Real", "description":"peluca de tifa para cosplay" , "price": "20" , "image":"./img/tifaPELUCA.png" ,"category":"cosplay"},
+
+
+    {"id":7,  "stock":20, "product":"Agrias Final Fantasy Tactics Figura", "description":"figura de final fantasy tactics agrias" , "price": "50" , "image":"./img/muñecoAGRIAS.png" ,"category":"figura"},
+
+
+    {"id":8,  "stock":20, "product":"Cloud Final Fantasy VII Figura", "description":"figura de final fantasy 7 cloud" , "price": "50" , "image":"./img/muñecoCloud.png" ,"category":"figura"},
+
+
+    {"id":9,  "stock":20, "product":"Serah Final Fantasy XIII Figura", "description":"figura de final fantasy 13 serah" , "price": "50" , "image":"./img/muñecoFF13.png" ,"category":"figura"}
+];
+
 const pagina = document.createElement("section");
     pagina.classList.add("pagina");
 
@@ -21,6 +49,8 @@ const listaProductos = document.createElement("li");
 const botonProductos = document.createElement("button");
     botonProductos.innerHTML = "Todo  "
     botonProductos.classList.add("botonProductos")
+    botonProductos.setAttribute("id", "all")
+    botonProductos.addEventListener("click", (allProducts));
         const iconoProductos = document.createElement("i");
             iconoProductos.setAttribute("class","bi bi-cursor-fill");
 
@@ -30,6 +60,9 @@ const listaFiguras = document.createElement("li");
     const botonFiguras = document.createElement("button");
         botonFiguras.innerHTML = "Figuras Coleccionables    "
         botonFiguras.classList.add("botonProductos");
+        botonFiguras.setAttribute("id", "figura");
+        botonFiguras.addEventListener("click", (e));
+        
             const iconoFiguras = document.createElement("i");
                 iconoFiguras.setAttribute("class","bi bi-tropical-storm");
 
@@ -39,6 +72,8 @@ const listaVestimenta = document.createElement("li");
     const botonVestimenta = document.createElement ("button");
         botonVestimenta.innerHTML = "Vestimenta/Cosplay  "
         botonVestimenta.classList.add("botonProductos");
+        botonVestimenta.setAttribute("id", "cosplay")
+        botonVestimenta.addEventListener("click", (e));
             const iconoVestimenta = document.createElement("i");
                 iconoVestimenta.setAttribute("class","bi bi-person-arms-up");
 
@@ -48,6 +83,8 @@ const listaJuegos = document.createElement("li");
     const botonJuegos = document.createElement ("button");
         botonJuegos.innerHTML = "Juegos Oficiales    "
         botonJuegos.classList.add("botonProductos");
+        botonJuegos.setAttribute("id", "juego")
+        botonJuegos.addEventListener("click", (e));
             const iconoJuegos = document.createElement("i");
                 iconoJuegos.setAttribute("class","bi bi-joystick");
 
@@ -80,204 +117,45 @@ const main = document.createElement("main");
     const sectionProductos = document.createElement("section");
         sectionProductos.classList.add("productos");
 
-    const divImagen1 = document.createElement("div");
-    divImagen1.classList.add("productoFoto");
+    function allProducts() {
 
-        const imagenProducto1 = document.createElement("img");
-        imagenProducto1.classList.add("foto")
-        imagenProducto1.setAttribute("src", "./img/ff8FISICO.png");
+        sectionProductos.innerHTML="";
 
-            const divProducto1 = document.createElement("div");
-            divProducto1.classList.add("productoInfo");
+        products.forEach(product => {
 
-                const nombreProducto1 = document.createElement("h3");
-                nombreProducto1.classList.add("productoNombre");
-                nombreProducto1.innerHTML = "Final Fantasy VIII"
+             const divProducto = document.createElement("div")
+            divProducto.classList.add("product");
+            divProducto.innerHTML = 
+            `
+            <div class="productoFoto">
+                <img class="foto" src="${product.image}" alt="${product.description}">
+            </div>
+            <div class="productoInfo">
+                <h3 class="productoNombre">${product.product}</h3>
+                <h4 class="precioProducto">${product.price}</h4>
+            <button class="botonCompra" id="${product.id}">Agregar al Carro</button>
+            </div>
+            
+            `
 
-                const precioProducto1 = document.createElement("h4");
-                precioProducto1.classList.add("precioProducto");
-                precioProducto1.innerHTML = "15 U$D"
+        sectionProductos.appendChild(divProducto);
 
-                const botonCompra1 = document.createElement("button")
-                botonCompra1.classList.add("botonCompra");
-                botonCompra1.innerHTML = "Agregar al Carro"
+        })
 
-    const divImagen2 = document.createElement("div");
-    divImagen2.classList.add("productoFoto");
+    }
 
-        const imagenProducto2 = document.createElement("img");
-        imagenProducto2.classList.add("foto")
-        imagenProducto2.setAttribute("src", "./img/ff9FISICO.png");
 
-            const divProducto2 = document.createElement("div")
-            divProducto2.classList.add("productoInfo");
+allProducts()
 
-                const nombreProducto2 = document.createElement("h3");
-                nombreProducto2.classList.add("productoNombre");
-                nombreProducto2.innerHTML = "Final Fantasy IX"
+function categorys () {
 
-                const precioProducto2 = document.createElement("h4");
-                precioProducto2.classList.add("precioProducto");
-                precioProducto2.innerHTML = "15 U$D"
+    sectionProductos.innerHTML="";
 
-                const botonCompra2 = document.createElement("button")
-                botonCompra2.classList.add("botonCompra");
-                botonCompra2.innerHTML = "Agregar al Carro"
+    const productsButton = products.filter(producto => producto.category.id === e.currentTarget.id);
+    allProducts(productsButton);
+        
+}
 
-    const divImagen3 = document.createElement("div");
-    divImagen3.classList.add("productoFoto");
-
-        const imagenProducto3 = document.createElement("img");
-        imagenProducto3.classList.add("foto")
-        imagenProducto3.setAttribute("src", "./img/ff16FISICO.png");
-
-            const divProducto3 = document.createElement("div")
-            divProducto3.classList.add("productoInfo");
-
-                const nombreProducto3 = document.createElement("h3");
-                nombreProducto3.classList.add("productoNombre");
-                nombreProducto3.innerHTML = "Final Fantasy XVI"
-
-                const precioProducto3 = document.createElement("h4");
-                precioProducto3.classList.add("precioProducto");
-                precioProducto3.innerHTML = "25 U$D"
-
-                const botonCompra3 = document.createElement("button")
-                botonCompra3.classList.add("botonCompra");
-                botonCompra3.innerHTML = "Agregar al Carro"
-
-    const divImagen4 = document.createElement("div");
-    divImagen4.classList.add("productoFoto");
-
-        const imagenProducto4 = document.createElement("img");
-        imagenProducto4.classList.add("foto")
-        imagenProducto4.setAttribute("src", "./img/ff14COS.png");
-
-            const divProducto4 = document.createElement("div")
-            divProducto4.classList.add("productoInfo");
-
-                const nombreProducto4 = document.createElement("h3");
-                nombreProducto4.classList.add("productoNombre");
-                nombreProducto4.innerHTML = "Cosplay COMPLETO ff14"
-
-                const precioProducto4 = document.createElement("h4");
-                precioProducto4.classList.add("precioProducto");
-                precioProducto4.innerHTML = "100 U$D"
-
-                const botonCompra4 = document.createElement("button")
-                botonCompra4.classList.add("botonCompra");
-                botonCompra4.innerHTML = "Agregar al Carro"
-
-    const divImagen5 = document.createElement("div");
-    divImagen5.classList.add("productoFoto");
-
-        const imagenProducto5 = document.createElement("img");
-        imagenProducto5.classList.add("foto")
-        imagenProducto5.setAttribute("src", "./img/tifaCOS.png");
-
-            const divProducto5 = document.createElement("div")
-            divProducto5.classList.add("productoInfo");
-
-                const nombreProducto5 = document.createElement("h3");
-                nombreProducto5.classList.add("productoNombre");
-                nombreProducto5.innerHTML = "Cosplay COMPLETO Tifa"
-
-                const precioProducto5 = document.createElement("h4");
-                precioProducto5.classList.add("precioProducto");
-                precioProducto5.innerHTML = "100 U$D"
-
-                const botonCompra5 = document.createElement("button")
-                botonCompra5.classList.add("botonCompra");
-                botonCompra5.innerHTML = "Agregar al Carro"
-
-    const divImagen6 = document.createElement("div");
-    divImagen6.classList.add("productoFoto");
-
-        const imagenProducto6 = document.createElement("img");
-        imagenProducto6.classList.add("foto")
-        imagenProducto6.setAttribute("src", "./img/tifaPELUCA.png");
-
-            const divProducto6 = document.createElement("div")
-            divProducto6.classList.add("productoInfo");
-
-                const nombreProducto6 = document.createElement("h3");
-                nombreProducto6.classList.add("productoNombre");
-                nombreProducto6.innerHTML = "Tifa Peluca Pelo Real"
-
-                const precioProducto6 = document.createElement("h4");
-                precioProducto6.classList.add("precioProducto");
-                precioProducto6.innerHTML = "20 U$D"
-
-                const botonCompra6 = document.createElement("button")
-                botonCompra6.classList.add("botonCompra");
-                botonCompra6.innerHTML = "Agregar al Carro"
-
-    const divImagen7 = document.createElement("div");
-    divImagen7.classList.add("productoFoto");
-
-        const imagenProducto7 = document.createElement("img");
-        imagenProducto7.classList.add("foto")
-        imagenProducto7.setAttribute("id", "fotoAgrias");
-        imagenProducto7.setAttribute("src", "./img/muñecoAGRIAS.png");
-
-            const divProducto7 = document.createElement("div")
-            divProducto7.classList.add("productoInfo");
-
-                const nombreProducto7 = document.createElement("h3");
-                nombreProducto7.classList.add("productoNombre");
-                nombreProducto7.innerHTML = "Agrias Final Fantasy Tactics Figura"
-
-                const precioProducto7 = document.createElement("h4");
-                precioProducto7.classList.add("precioProducto");
-                precioProducto7.innerHTML = "50 U$D"
-
-                const botonCompra7 = document.createElement("button")
-                botonCompra7.classList.add("botonCompra");
-                botonCompra7.innerHTML = "Agregar al Carro"
-
-    const divImagen8 = document.createElement("div");
-    divImagen8.classList.add("productoFoto");
-
-        const imagenProducto8 = document.createElement("img");
-        imagenProducto8.classList.add("foto")
-        imagenProducto8.setAttribute("src", "./img/muñecoCloud.png");
-
-            const divProducto8 = document.createElement("div")
-            divProducto8.classList.add("productoInfo");
-
-                const nombreProducto8 = document.createElement("h3");
-                nombreProducto8.classList.add("productoNombre");
-                nombreProducto8.innerHTML = "Cloud Final Fantasy VII Figura"
-
-                const precioProducto8 = document.createElement("h4");
-                precioProducto8.classList.add("precioProducto");
-                precioProducto8.innerHTML = "50 U$D"
-
-                const botonCompra8 = document.createElement("button")
-                botonCompra8.classList.add("botonCompra");
-                botonCompra8.innerHTML = "Agregar al Carro"
-
-    const divImagen9 = document.createElement("div");
-    divImagen9.classList.add("productoFoto");
-
-        const imagenProducto9 = document.createElement("img");
-        imagenProducto9.classList.add("foto")
-        imagenProducto9.setAttribute("src", "./img/muñecoFF13.png");
-
-            const divProducto9 = document.createElement("div")
-            divProducto9.classList.add("productoInfo");
-
-                const nombreProducto9 = document.createElement("h3");
-                nombreProducto9.classList.add("productoNombre");
-                nombreProducto9.innerHTML = "Serah Final Fantasy XIII Figura"
-
-                const precioProducto9 = document.createElement("h4");
-                precioProducto9.classList.add("precioProducto");
-                precioProducto9.innerHTML = "50 U$D"
-
-                const botonCompra9 = document.createElement("button")
-                botonCompra9.classList.add("botonCompra");
-                botonCompra9.innerHTML = "Agregar al Carro"
 
 const footer = document.createElement("footer");
     footer.classList.add("footer")
@@ -309,62 +187,10 @@ document.body.append(pagina);
                             botonCarro.appendChild(linkCarro);
                             linkCarro.appendChild(numProductos);
                             numProductos.appendChild(iconoCarro);
+
     pagina.appendChild(main);
         main.appendChild(h1);
         main.appendChild(sectionProductos);
-            sectionProductos.appendChild(divImagen1);
-                divImagen1.appendChild(imagenProducto1);
-                divImagen1.appendChild(divProducto1);
-                    divProducto1.appendChild(nombreProducto1);
-                    divProducto1.appendChild(precioProducto1);
-                    divProducto1.appendChild(botonCompra1);
-            sectionProductos.appendChild(divImagen2);
-                divImagen2.appendChild(imagenProducto2);
-                divImagen2.appendChild(divProducto2);
-                    divProducto2.appendChild(nombreProducto2);
-                    divProducto2.appendChild(precioProducto2);
-                    divProducto2.appendChild(botonCompra2);
-            sectionProductos.appendChild(divImagen3);
-                divImagen3.appendChild(imagenProducto3);
-                divImagen3.appendChild(divProducto3);
-                    divProducto3.appendChild(nombreProducto3);
-                    divProducto3.appendChild(precioProducto3);
-                     divProducto3.appendChild(botonCompra3);
-            sectionProductos.appendChild(divImagen4);
-                divImagen4.appendChild(imagenProducto4);
-                divImagen4.appendChild(divProducto4);
-                    divProducto4.appendChild(nombreProducto4);
-                    divProducto4.appendChild(precioProducto4);
-                    divProducto4.appendChild(botonCompra4);
-            sectionProductos.appendChild(divImagen5);
-                divImagen5.appendChild(imagenProducto5);
-                divImagen5.appendChild(divProducto5);
-                    divProducto5.appendChild(nombreProducto5);
-                    divProducto5.appendChild(precioProducto5);
-                    divProducto5.appendChild(botonCompra5);
-            sectionProductos.appendChild(divImagen6);
-                divImagen6.appendChild(imagenProducto6);
-                divImagen6.appendChild(divProducto6);
-                    divProducto6.appendChild(nombreProducto6);
-                    divProducto6.appendChild(precioProducto6);
-                     divProducto6.appendChild(botonCompra6);
-            sectionProductos.appendChild(divImagen7);
-                divImagen7.appendChild(imagenProducto7);
-                divImagen7.appendChild(divProducto7);
-                    divProducto7.appendChild(nombreProducto7);
-                    divProducto7.appendChild(precioProducto7);
-                    divProducto7.appendChild(botonCompra7);
-            sectionProductos.appendChild(divImagen8);
-                divImagen8.appendChild(imagenProducto8);
-                divImagen8.appendChild(divProducto8);
-                    divProducto8.appendChild(nombreProducto8);
-                    divProducto8.appendChild(precioProducto8);
-                    divProducto8.appendChild(botonCompra8);
-            sectionProductos.appendChild(divImagen9);
-                divImagen9.appendChild(imagenProducto9);
-                divImagen9.appendChild(divProducto9);
-                    divProducto9.appendChild(nombreProducto9);
-                    divProducto9.appendChild(precioProducto9);
-                     divProducto9.appendChild(botonCompra9);
+
 document.body.append(footer);
     footer.appendChild(p);
